@@ -5,19 +5,19 @@ public class Student {
     private String name;
     private static String college = "BBDIT";
 
-//    constructor to initialize the variable
+    //constructor to initialize the variable
     Student(int r, String n) {
         rollno = r;
         name = n;
     }
 
-//    static method to change the value of static variable
+    //static method to change the value of static variable
     static void change() {
         college = "CODEGYM";
     }
 
-//    method to display value
+    //method to display values
     void display() {
-        System.out.println (rollno + " " + name + " " + college);
+        System.out.println(rollno + " " + name + " " + college);
     }
 }
