@@ -2,69 +2,60 @@ import java.util.Scanner;
 
 public class ReadNumber {
     public static void main(String[] args) {
+        int number;
         Scanner sc = new Scanner ( System.in );
-        System.out.println ( "Enter the number to read: " );
-        int number = sc.nextInt ();
-        while (number < 0 || number > 1000) {
-            System.out.println ( "Please enter a number between 0 and 999" );
+        do {
+            System.out.println ( "Enter the number to read (0 to 999): " );
             number = sc.nextInt ();
-        }
-        while (number >= 0 && number < 1000) {
-            int first = number / 100;
-            int second = (number % 100) / 10;
-            int third = number % 10;
+            while (number >= 0 && number < 1000) {
+                int first = number / 100;
+                int second = (number % 100) / 10;
+                int third = number % 10;
 
-            String result = null;
+                String result = null;
 
-            if (number < 10 ) {
-                result = zeroToNine ( third );
-                System.out.printf ( "%d reads as %s", number, result );
-                return;
-            }
-            if ( number < 20 ) {
-                result = read10To19 ( third );
-                System.out.printf ( "%d reads as %s", number, result );
-                return;
-            }
-            if ( number < 100 ) {
-                result = read20To99 ( second );
-                String unit = "";
-                if ( third != 0 ) {
-                    unit = zeroToNine ( third );
-                    System.out.printf ( "%d reads as: %s %s", number, result, unit );
-                    return;
-                }
-                System.out.printf ( "%d reads as: %s %s", number, result, unit );
-                return;
-            }
-            if ( number < 1000 ) {
-                result = zeroToNine ( first );
-                if ( second == 0 ) {
-                    if ( third == 0 ) {
-                        System.out.printf ( "%d reads as: %s hundred", number, result );
-                        return;
-                    }
-                    String unit = zeroToNine ( third );
-                    System.out.printf ( "%d reads as: %s hundred and %s", number, result, unit );
-                    return;
-                } else if ( second == 1 ) {
-                    String readTens = read10To19 ( third );
-                    System.out.printf ( "%d reads as: %s hundred and %s", number, result, readTens );
-                    return;
-                } else {
-                    String tens = read20To99 ( second );
+                if ( number < 10 ) {
+                    result = zeroToNine ( third );
+                    System.out.printf ( "%d reads as %s", number, result );
+                } else if ( number < 20 ) {
+                    result = read10To19 ( third );
+                    System.out.printf ( "%d reads as %s", number, result );
+                } else if ( number < 100 ) {
+                    result = read20To99 ( second );
+                    String unit = "";
                     if ( third != 0 ) {
-                        String unit = zeroToNine ( third );
-                        System.out.printf ( "%d reads as: %s hundred and %s %s", number, result, tens, unit );
-                        return;
+                        unit = zeroToNine ( third );
+                        System.out.printf ( "%d reads as: %s %s", number, result, unit );
+                    } else {
+                        System.out.printf ( "%d reads as: %s %s", number, result, unit );
                     }
-                    System.out.printf ( "%d reads as: %s hundred and %s", number, result, tens );
-                    return;
+                } else {
+                    result = zeroToNine ( first );
+                    if ( second == 0 ) {
+                        if ( third == 0 ) {
+                            System.out.printf ( "%d reads as: %s hundred", number, result );
+                            return;
+                        } else {
+                            String unit = zeroToNine ( third );
+                            System.out.printf ( "%d reads as: %s hundred and %s", number, result, unit );
+                        }
+                    } else if ( second == 1 ) {
+                        String readTens = read10To19 ( third );
+                        System.out.printf ( "%d reads as: %s hundred and %s", number, result, readTens );
+                    } else {
+                        String tens = read20To99 ( second );
+                        if ( third != 0 ) {
+                            String unit = zeroToNine ( third );
+                            System.out.printf ( "%d reads as: %s hundred and %s %s", number, result, tens, unit );
+                        } else {
+                            System.out.printf ( "%d reads as: %s hundred and %s", number, result, tens );
+                        }
+                    }
                 }
+                System.out.println ( "\nEnter the number to read (0 to 999): " );
+                number = sc.nextInt ();
             }
-            System.out.println ( "Enter the number to read: " );
-            number = sc.nextInt ();
-        }
+        } while (number < 0 || number >= 1000);
     }
 
     public static String zeroToNine(int number) {
