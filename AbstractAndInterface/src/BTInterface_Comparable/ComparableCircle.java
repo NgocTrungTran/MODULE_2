@@ -3,7 +3,7 @@ package BTInterface_Comparable;
 public class ComparableCircle extends Circle
 implements Comparable<ComparableCircle> {
 
-    public  ComparableCircle() {
+    public ComparableCircle() {
 
     }
 
