@@ -14,6 +14,11 @@ implements Comparable<ComparableRectangle>{
         super(width, length, color, filled );
     }
 
+    @Override
+    public String howtoColor(String color) {
+        return null;
+    }
+
 
     @Override
     public int compareTo(ComparableRectangle o) {

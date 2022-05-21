@@ -47,4 +47,10 @@ public class Square extends Rectangle {
         square = new Square (5.8, "gray", true);
         System.out.println (square);
     }
+
+    @Override
+    public String howtoColor(String color) {
+        this.setColor (color);
+        return color;
+    }
 }

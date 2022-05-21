@@ -1,6 +1,6 @@
 package BTInterface;
 
-public class Rectangle extends Shape {
+public abstract class Rectangle extends Shape {
     public double width = 1.0;
     public double length = 2.0;
 
@@ -58,4 +58,9 @@ public class Rectangle extends Shape {
         this.width *= (percent/200);
     }
 
+    public void howtoColor(){
+        this.getColor ();
+    }
+
+    public abstract String howtoColor(String color);
 }

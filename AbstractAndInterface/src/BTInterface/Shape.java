@@ -36,13 +36,28 @@ public abstract class Shape {
     }
 
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle();
+        Rectangle rectangle = new Rectangle () {
+            @Override
+            public String howtoColor(String color) {
+                return null;
+            }
+        };
         System.out.println(rectangle);
 
-        rectangle = new Rectangle(2.3, 5.8);
+        rectangle = new Rectangle ( 2.3, 5.8 ) {
+            @Override
+            public String howtoColor(String color) {
+                return null;
+            }
+        };
         System.out.println(rectangle);
 
-        rectangle = new Rectangle(2.5, 3.8, "orange", true);
+        rectangle = new Rectangle ( 2.5, 3.8, "orange", true ) {
+            @Override
+            public String howtoColor(String color) {
+                return null;
+            }
+        };
         System.out.println(rectangle);
 
     }
