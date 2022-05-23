@@ -1,4 +1,4 @@
-package THRefactoring;
+package THRefactoring_separateCONST;
 
 public class Calculator {
     public static final char ADDITION = '+';
