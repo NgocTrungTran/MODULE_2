@@ -1,4 +1,4 @@
-package THListSimple;
+package THArrayListSimple;
 
 public class MyListTest {
     public static void main(String[] args) {

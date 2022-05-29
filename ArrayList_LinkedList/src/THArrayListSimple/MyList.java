@@ -1,4 +1,4 @@
-package THListSimple;
+package THArrayListSimple;
 
 import java.util.Arrays;
 
