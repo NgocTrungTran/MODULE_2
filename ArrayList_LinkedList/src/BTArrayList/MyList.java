@@ -11,54 +11,91 @@ public class MyList<E> {
         elements = new Object[DEFAULT_CAPACITY];
     }
 
-    public MyList(int capacity) {
-        if ( capacity > 0 ) {
-            elements = new Object[capacity];
-            System.out.println ( "Compeled!" );
-        } else {
-            System.out.println ( "Invalid!" );
-            throw new IllegalArgumentException ();
+    public MyList(int size) {
+        elements = new Object[size];
+    }
+    public MyList(int size, Object[] elements) {
+        this.size = size;
+        this.elements = elements;
+    }
+
+    public void ensureCapacity() {
+        if ( size > elements.length ) {
+            elements = Arrays.copyOf ( elements, size * 2 );
         }
     }
 
-    public void add(int index, E elements) {
-
+    public void add(E element) {
+        size += 1;
+        ensureCapacity ();
+        elements[size - 1] = element;
     }
 
-    public E remove(int index) {
-
+    public boolean remove(int index) {
+        if ( index >= 0 && index <= size ) {
+            for (int i = index; i < size; i++) {
+                elements[i] = elements[i + 1];
+            }
+            size -= 1;
+            return true;
+        }
+        return false;
     }
 
     public int size() {
-
+        return size;
     }
 
-    public E clone() {
-
+    public Object clone() {
+        MyList<Object> newMylist = new MyList<Object> ();
+        for (Object element : elements) {
+            if ( element != null ) {
+                newMylist.add ( element );
+            }
+        }
+        return newMylist;
     }
 
     public boolean contains(E o) {
-
+        for (int i = 0; i < size; i++) {
+            if ( elements[i].equals ( o ) ){
+                return true;
+            }
+        }
+        return false;
     }
 
     public int indexOf(E o) {
-
+        for (int i = 0; i < size; i++) {
+            if ( elements[i].equals ( o ) ){
+                return i;
+            }
+        }
+        return -1;
     }
 
-    public boolean add(E e) {
-
+    public boolean add(E element, int index) {
+        if ( index >= 0 && index < size ) {
+            size += 1;
+            ensureCapacity ();
+            for (int i = size - 2; i >= index ; i--) {
+                elements[i + 1] = elements[i];
+            }
+            elements[index] = element;
+            return true;
+        }
+        return false;
     }
 
-    public void ensureCapacity(int minCapacity) {
-        minCapacity = elements.length * 2;
-        elements = Arrays.copyOf (elements, minCapacity);
-    }
-
-    public E get(int i) {
-
+    public Object get(int i) {
+        if ( i >= 0 && i <= size ) {
+            return elements[i];
+        }
+        return null;
     }
 
     public void clear() {
-
+        elements = (Object[]) new Object [DEFAULT_CAPACITY];
+        size = 0;
     }
 }
