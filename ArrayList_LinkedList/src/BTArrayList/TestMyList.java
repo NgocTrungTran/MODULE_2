@@ -1,12 +1,8 @@
 package BTArrayList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-
 public class TestMyList {
     public static void main(String[] args) {
-        MyList<Integer> myList = new MyList<Integer> ( 5 );
+        MyList<Integer> myList = new MyList<Integer> ( );
         myList.add ( 4 );
         myList.add ( 2 );
         myList.add ( 5 );
@@ -22,8 +18,9 @@ public class TestMyList {
 
 
         myList.clear ();
-        System.out.println (myList.size ());
 
+        MyList<Integer> list = myList.clone ();
+        System.out.println(list);
 
     }
 }

@@ -1,6 +1,7 @@
 package BTArrayList;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MyList<E> {
     private int size = 0;
@@ -46,8 +47,8 @@ public class MyList<E> {
         return size;
     }
 
-    public Object clone() {
-        MyList<Object> newMylist = new MyList<Object> ();
+    public MyList clone() {
+        MyList newMylist = new MyList<> ();
         for (Object element : elements) {
             if ( element != null ) {
                 newMylist.add ( element );
