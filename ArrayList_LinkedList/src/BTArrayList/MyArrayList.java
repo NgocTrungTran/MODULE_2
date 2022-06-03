@@ -25,10 +25,11 @@ public class MyArrayList<E> {
         }
     }
 
-    public void add(E element) {
+    public boolean add(E element) {
         size += 1;
         ensureCapacity ();
         elements[size - 1] = element;
+        return true;
     }
 
     public boolean remove(int index) {
@@ -74,7 +75,7 @@ public class MyArrayList<E> {
         return -1;
     }
 
-    public boolean add(E element, int index) {
+    public void add(E element, int index) {
         if ( index >= 0 && index < size ) {
             size += 1;
             ensureCapacity ();
@@ -82,9 +83,7 @@ public class MyArrayList<E> {
                 elements[i + 1] = elements[i];
             }
             elements[index] = element;
-            return true;
         }
-        return false;
     }
 
     public Object get(int i) {

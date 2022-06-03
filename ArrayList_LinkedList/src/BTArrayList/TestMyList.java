@@ -10,6 +10,7 @@ public class TestMyList {
         myArrayList.add ( 5 );
         myArrayList.add ( 8 );
 
+        System.out.println (myArrayList);
         MyArrayList<Integer> newarr =  myArrayList.clone ();
         for (int i = 0; i < newarr.size (); i++) {
             System.out.print (newarr.get ( i ) + " ");

@@ -29,6 +29,12 @@ public class TestMyLinkedList {
         System.out.println (linkedList.contains ( "haha" ));
 
         System.out.println (linkedList.indexOf ( 2 ));
+
+        System.out.println (linkedList.remove ( "okela" ));
+        linkedList.printList ();
+        System.out.println ("");
+        System.out.println ("F: " + linkedList.getFirst ());
+        System.out.println ("L: " + linkedList.getLast ());
 //        linkedList.remove ( 3 );
 //        linkedList.get ( 2 );
 //        System.out.println ("");

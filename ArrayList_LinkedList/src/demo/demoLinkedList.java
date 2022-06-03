@@ -25,5 +25,8 @@ public class demoLinkedList {
         linkedList.addFirst ( "Code" );
         System.out.println (linkedList);
         linkedList.remove (1);
+
+        linkedList.clone ();
+        linkedList.getFirst ();
     }
 }
