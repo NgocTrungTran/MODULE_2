@@ -6,7 +6,7 @@ public class MyLinkedList {
     private int numNodes;
     private boolean flag;
 
-    public static class Node {
+    public class Node {
         private Node next;
         private Object data;
 
@@ -28,13 +28,13 @@ public class MyLinkedList {
             temp = temp.next;
         }
         holder = temp.next;
-        temp.next = new Node(data);
+        temp.next = new Node ( data );
         temp.next.next = holder;
         numNodes++;
     }
     public void addFirst(Object data) {
         Node temp = head;
-        head = new Node(data);
+        head = new Node ( data );
         head.next = temp;
         numNodes++;
     }
@@ -44,16 +44,16 @@ public class MyLinkedList {
         else {
             Node temp = head;
             while (temp.next != null) temp = temp.next;
-            temp.next = new Node(data);
+            temp.next = new Node ( data );
         }
     }
     public void remove(int index) {
         Node temp = head;
-
         for (int i = 0; i < index - 1 && temp.next != null; i++) {
-            temp.next = temp.next.next;
+            temp = temp.next;
         }
-
+        assert temp.next != null;
+        temp.next = temp.next.next;
         numNodes--;
     }
     public void get(int index) {
@@ -86,25 +86,23 @@ public class MyLinkedList {
     }
     public int indexOf(Object data) {
         Node temp = head;
-        int q = 0;
+        int index = -1;
         for (int i = 0; i <= numNodes; i++) {
             if ((temp.data).equals(data)) {
-                q = i;
+                index = i;
                 break;
             }
             else {
                 temp = temp.next;
             }
         }
-        return q;
+        return index;
     }
     public void printList() {
         Node temp = head;
         while (temp != null) {
-            System.out.println(temp.data);
+            System.out.print(temp.data + " ");
             temp = temp.next;
         }
     }
-
-
 }

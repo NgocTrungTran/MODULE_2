@@ -1,21 +1,20 @@
 package BTArrayList;
 
 import java.util.Arrays;
-import java.util.Objects;
 
-public class MyList<E> {
+public class MyArrayList<E> {
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] elements;
 
-    public MyList() {
+    public MyArrayList() {
         elements = new Object[DEFAULT_CAPACITY];
     }
 
-    public MyList(int size) {
+    public MyArrayList(int size) {
         elements = new Object[size];
     }
-    public MyList(int size, Object[] elements) {
+    public MyArrayList(int size, Object[] elements) {
         this.size = size;
         this.elements = elements;
     }
@@ -47,8 +46,8 @@ public class MyList<E> {
         return size;
     }
 
-    public MyList clone() {
-        MyList newMylist = new MyList<> ();
+    public MyArrayList clone() {
+        MyArrayList newMylist = new MyArrayList<> ();
         for (Object element : elements) {
             if ( element != null ) {
                 newMylist.add ( element );
@@ -98,5 +97,8 @@ public class MyList<E> {
     public void clear() {
         elements = (Object[]) new Object [DEFAULT_CAPACITY];
         size = 0;
+    }
+    public Object[] toArray() {
+        return Arrays.copyOf(elements, size);
     }
 }
