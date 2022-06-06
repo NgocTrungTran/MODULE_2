@@ -1,6 +1,6 @@
 package THStack_Arr;
 
-public class MyStack<T> {
+public class MyStack {
     private int[] arr;
     private int size;
     private int index = 0;
@@ -19,7 +19,7 @@ public class MyStack<T> {
 
     public int pop() throws Exception {
         if ( isEmpty() ) {
-            throw new Exception ("Stack is full");
+            throw new Exception ("Stack is Empty");
         }
         return arr[--index];
     }
