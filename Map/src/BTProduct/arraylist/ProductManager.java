@@ -58,7 +58,7 @@ public class ProductManager {
         long id;
         double price;
 
-        id = System.currentTimeMillis () / 10000;
+        id = System.currentTimeMillis () % 100;
 //        do {
 //            System.out.print("Product id: ");
 //            id = input.nextInt();
@@ -121,7 +121,7 @@ public class ProductManager {
                                     product.setPrice ( newPrice );
                                     break;
                                 case '0':
-                                    displayProduct ();
+                                    menuManager ();
                                     break;
                             }
                         } while (choice != 0);
@@ -144,8 +144,7 @@ public class ProductManager {
                         System.out.println ( product );
                     }
                 }
-            }
-            else {
+            } else {
                 System.out.println ( "Not have!" );
             }
         }
@@ -178,8 +177,9 @@ public class ProductManager {
             System.out.println ( "There are no product in the list" );
         } else {
             int i = 1;
+            System.out.printf ("%-5s%-12s%-30s%-20s\n", "STT", "ID", "Name", "Price");
             for (Product product : listProduct) {
-                System.out.println ( i + ": " + product.toString () );
+                System.out.printf("%-5d%-12d%-30s%-20.2s\n",i, product.getId (), product.getName (), product.getPrice ());
                 i++;
             }
         }
@@ -217,52 +217,53 @@ public class ProductManager {
         }
     }
 
-//    public void menuManager() {
-//        char choice = '?';
-//        while (true) {
-//            System.out.println ( "++++ Menu product Manager ++++" );
-//            System.out.println ( "1. Add Product " );
-//            System.out.println ( "2. Edit Product with id " );
-//            System.out.println ( "3. find product with name " );
-//            System.out.println ( "4. Delete product with id " );
-//            System.out.println ( "5. Display product list " );
-//            System.out.println ( "6. Sort in ascending order of price" );
-//            System.out.println ( "7. Sort in decrease order of price" );
-//            System.out.println ( "0. Exit progame" );
-//            System.out.println ( "------------------------" );
-//            System.out.print ( "Your choice : " );
-//            Scanner change = new Scanner ( System.in );
-//            choice = change.nextLine ().charAt ( 0 );
-//
-//            switch (choice) {
-//                case '1':
-//                    addProduct ();
-//                    break;
-//                case '2':
-//                    editProductById ();
-//                    break;
-//                case '3':
-//                    findProductByName ();
-//                    break;
-//                case '4':
-//                    deleteProductById ();
-//                    break;
-//                case '5':
-//                    displayProduct ();
-//                    break;
-//                case '6':
-//                    sortPriceAscending ();
-//                    break;
-//                case '7':
-//                    sortPriceDecrease ();
-//                    break;
-//                case '0':
-//                    System.exit ( 0 );
-//                    break;
-//                default:
-//                    throw new IllegalStateException ( "Unexpected value: " + choice );
-//            }
-//        }
-//    }
+    public void menuManager() {
+        char choice = '?';
+        while (true) {
+            System.out.println ("◤◚◚◚◚◚◚◚◚◚◚◚◚◚◚◚◚◚ Menu product Manager ◚◚◚◚◚◚◚◚◚◚◚◚◚◚◚◚◚◥"+
+                              "\n▌           1. Add Product                                              ▌"+
+                              "\n▌           2. Edit Product with id                                     ▌"+
+                              "\n▌           3. Find product with name                                   ▌"+
+                              "\n▌           4. Delete product with id                                   ▌"+
+                              "\n▌           5. Display product list                                     ▌"+
+                              "\n▌           6. Sort in ascending order of price                         ▌"+
+                              "\n▌           7. Sort in decrease order of price                          ▌"+
+                              "\n▌           0. Exit progame                                             ▌"+
+                              "\n▌                                                                       ▌"+
+                              "\n◣◛◛◛◛◛◛◛◛◛◛◛◛◛◛◛◛◛❀❀❀❀❀❀❀❀❀❀❀❀❀❀❀❀◛◛◛◛◛◛◛◛◛◛◛◛◛◛◛◛◛◢"
+                                );
+            System.out.print ( "Your choice : " );
+            Scanner change = new Scanner ( System.in );
+            choice = change.nextLine ().charAt ( 0 );
+            switch (choice) {
+                case '1':
+                    addProduct ();
+                    break;
+                case '2':
+                    editProductById ();
+                    break;
+                case '3':
+                    findProductByName ();
+                    break;
+                case '4':
+                    deleteProductById ();
+                    break;
+                case '5':
+                    displayProduct ();
+                    break;
+                case '6':
+                    sortPriceAscending ();
+                    break;
+                case '7':
+                    sortPriceDecrease ();
+                    break;
+                case '0':
+                    System.exit ( 0 );
+                    break;
+                default:
+                    throw new IllegalStateException ( "Unexpected value: " + choice );
+            }
+        }
+    }
 }
 
