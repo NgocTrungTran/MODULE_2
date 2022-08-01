@@ -51,6 +51,61 @@ public class BinarySearchTree<E extends Comparable<E>> extends AbstractTree {
     }
 
     @Override
+    public boolean insert(Comparable e) {
+        if (root == null)
+            root = createNewNode( (E) e ); /*create a new root*/
+        else {
+            /*locate the parent node*/
+            TreeNode<E> parent = null;
+            TreeNode<E> current = root;
+            while (current != null) {
+                if (e.compareTo(current.element) < 0) {
+                    parent = current;
+                    current = current.left;
+                } else if (e.compareTo(current.element) > 0) {
+                    parent = current;
+                    current = current.right;
+                } else
+                    return false; /*Duplicate node not inserted*/
+            }
+            if (e.compareTo(parent.element) < 0)
+                parent.left = createNewNode(e);
+            else
+                parent.right = createNewNode(e);
+        }
+        size++;
+        return true; /*element inserted successfully*/
+    }
+
+    @Override
+    public boolean insert(Object o) {
+        E e;
+        if (root == null)
+            root = createNewNode(e); /*create a new root*/
+        else {
+            /*locate the parent node*/
+            TreeNode<E> parent = null;
+            TreeNode<E> current = root;
+            while (current != null) {
+                if (e.compareTo(current.element) < 0) {
+                    parent = current;
+                    current = current.left;
+                } else if (e.compareTo(current.element) > 0) {
+                    parent = current;
+                    current = current.right;
+                } else
+                    return false; /*Duplicate node not inserted*/
+            }
+            if (e.compareTo(parent.element) < 0)
+                parent.left = createNewNode(e);
+            else
+                parent.right = createNewNode(e);
+        }
+        size++;
+        return true; /*element inserted successfully*/
+    }
+
+    @Override
     public void inorder() {
         inorder(root);
     }

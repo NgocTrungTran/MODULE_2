@@ -91,13 +91,16 @@ public class MyLinkedList {
         return i;
     }
 
-        public MyLinkedList clone() {
-        Node temp = head;
-        MyLinkedList newList = new MyLinkedList (  );
-        for (int i = 0; i < numNodes; i++) {
-
+    public MyLinkedList clone() {
+        MyLinkedList clone = new MyLinkedList ();
+        clone.addFirst ( head.data );
+        for (int i = 1; i < numNodes; i++) {
+            Node temp = null;
+            clone.addLast ( temp.data );
         }
+        return clone;
     }
+
     public boolean contains(Object data) {
         Node temp = head;
         for (int i = 0; i <= numNodes; i++) {

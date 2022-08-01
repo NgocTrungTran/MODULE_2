@@ -12,14 +12,14 @@ import static org.junit.Assert.assertEquals;
 @RunWith (Parameterized.class)
 public class TennisGameTest {
 
-    private int player1Score;
-    private int player2Score;
-    private String expectedScore;
+    private final int PLAYER_1_SOCER;
+    private final int PLAYER_2_SOCER;
+    private final String EXPECTED_SCORE;
 
-    public TennisGameTest(int play1Score, int play2Socre, String expectedScore) {
-        this.player1Score = play1Score;
-        this.player2Score = play2Socre;
-        this.expectedScore = expectedScore;
+    public TennisGameTest(int play1Score, int play2Score, String expectedScore) {
+        PLAYER_1_SOCER = play1Score;
+        PLAYER_2_SOCER = play2Score;
+        EXPECTED_SCORE = expectedScore;
     }
 
     @Parameterized.Parameters
@@ -37,46 +37,46 @@ public class TennisGameTest {
                 { 0, 2, "Love-Thirty"},
                 { 3, 0, "Forty-Love"},
                 { 0, 3, "Love-Forty"},
-                { 4, 0, "Win for player1"},
-                { 0, 4, "Win for player2"},
+                { 4, 0, "Win for John"},
+                { 0, 4, "Win for Bill"},
 
                 { 2, 1, "Thirty-Fifteen"},
                 { 1, 2, "Fifteen-Thirty"},
                 { 3, 1, "Forty-Fifteen"},
                 { 1, 3, "Fifteen-Forty"},
-                { 4, 1, "Win for player1"},
-                { 1, 4, "Win for player2"},
+                { 4, 1, "Win for John"},
+                { 1, 4, "Win for Bill"},
 
                 { 3, 2, "Forty-Thirty"},
                 { 2, 3, "Thirty-Forty"},
-                { 4, 2, "Win for player1"},
-                { 2, 4, "Win for player2"},
+                { 4, 2, "Win for John"},
+                { 2, 4, "Win for Bill"},
 
-                { 4, 3, "Advantage player1"},
-                { 3, 4, "Advantage player2"},
-                { 5, 4, "Advantage player1"},
-                { 4, 5, "Advantage player2"},
-                { 15, 14, "Advantage player1"},
-                { 14, 15, "Advantage player2"},
+                { 4, 3, "Advantage for John"},
+                { 3, 4, "Advantage for Bill"},
+                { 5, 4, "Advantage for John"},
+                { 4, 5, "Advantage for Bill"},
+                { 15, 14, "Advantage for John"},
+                { 14, 15, "Advantage for Bill"},
 
-                { 6, 4, "Win for player1"},
-                { 4, 6, "Win for player2"},
-                { 16, 14, "Win for player1"},
-                { 14, 16, "Win for player2"},
+                { 6, 4, "Win for John"},
+                { 4, 6, "Win for Bill"},
+                { 16, 14, "Win for John"},
+                { 14, 16, "Win for Bill"},
         } );
     }
 
     @Test
     public void checkAllScores() {
-        int highestScore = Math.max(this.player1Score, this.player2Score);
-        int m_score1 = 0;
-        int m_score2 = 0;
+        int highestScore = Math.max(PLAYER_1_SOCER, PLAYER_2_SOCER);
+        int scorePlayer1 = 0;
+        int scorePlayer2 = 0;
         for (int i = 0; i < highestScore; i++) {
-            if ( i < this.player1Score )
-                m_score1 += 1;
-            if ( i < this.player2Score )
-                m_score2 += 1;
+            if ( i < PLAYER_1_SOCER )
+                scorePlayer1 += 1;
+            if ( i < PLAYER_2_SOCER )
+                scorePlayer2 += 1;
         }
-//        assertEquals(this.expectedScore, TennisGame.getScore ( "John", "Bill", m_score1, m_score2 ));
+        assertEquals(EXPECTED_SCORE, TennisGame.getScore ( "John", "Bill", scorePlayer1, scorePlayer2 ));
     }
 }

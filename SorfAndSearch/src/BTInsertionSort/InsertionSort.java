@@ -17,4 +17,12 @@ public class InsertionSort {
             array[pos] = x;
         }
     }
+
+    public static void main(String[] args) {
+        int[] arr = new int[] {4, 2, 1, 6, 3};
+        insertionSort ( arr );
+        for (int i: arr) {
+            System.out.println (i);
+        }
+    }
 }
